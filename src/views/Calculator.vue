@@ -111,7 +111,6 @@ const existKeys = ref<Object>({
 })
 
 function calculate(calcType: string | number, value: string | number, numberType: string | null) {
-  console.log(calcType, value, numberType)
   isShowEqual()
 
   switch (calcType) {
