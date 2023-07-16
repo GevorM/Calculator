@@ -134,14 +134,14 @@ function calculate(calcType: string | number, value: string | number, numberType
 }
 
 function keyDown(event) {
-  const key = event.key;
-  const value = existKeys.value[key];
+  const key = event.key
+  const value = existKeys.value[key]
 
   if (value !== undefined) {
     const numberType: NumberType = (value === 'e') ? 'e' : (value === 'µ' ? 'µ' : (value === 'sin' ? 'sin' : (value === 'Ac' ? 'Ac' : 'x')))
     const calcType:CalcType = Number(value) ? 'number' : 'operator'
 
-    calculate(calcType, value, numberType);
+    calculate(calcType, value, numberType)
   }
 }
 
