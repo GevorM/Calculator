@@ -2,7 +2,7 @@ import {RouteRecordRaw} from "vue-router"
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '/calculator',
     component: () => import('./../views/Calculator.vue'),
     meta: { title: 'Calculator'},
   }

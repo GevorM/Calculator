@@ -3,7 +3,7 @@
     <aside :vue:is-open="isSidebarOpen">
       <ul>
         <li>
-          <router-link to="/">
+          <router-link to="/calculator">
             <font-awesome-icon :icon="['fas', 'calculator']" />
             <Transition name="fade">
               <span v-show="isSidebarOpen">Calculator</span>
