@@ -1,5 +1,5 @@
 import { DOMWrapper, shallowMount, VueWrapper } from "@vue/test-utils";
-import { afterEach, beforeEach, describe, vi, it, expect } from "vitest";
+import { beforeEach, describe, it, expect } from "vitest";
 import NumberButton from "@/components/UI/NumberButton.vue";
 
 type ButtonSizeType = "small" | "normal" | "vertical" | "horizontal";
@@ -48,7 +48,7 @@ describe("[NumberButton] test", () => {
   describe("Should emit type on click", () => {
     it("should emit default prop", async () => {
       wrapper = mountComponent();
-      const buttonComponent: HTMLDivElement | undefined = wrapper.find<HTMLDivElement>(".button");
+      const buttonComponent: DOMWrapper<HTMLDivElement> = wrapper.find<HTMLDivElement>(".button");
 
       expect(buttonComponent.exists()).toBeTruthy();
 
@@ -60,7 +60,7 @@ describe("[NumberButton] test", () => {
       wrapper = mountComponent({
         type: "operator",
       });
-      const buttonComponent: HTMLDivElement | undefined = wrapper.find<HTMLDivElement>(".button");
+      const buttonComponent: DOMWrapper<HTMLDivElement> = wrapper.find<HTMLDivElement>(".button");
 
       expect(buttonComponent.exists()).toBeTruthy();
 
@@ -72,7 +72,7 @@ describe("[NumberButton] test", () => {
       wrapper = mountComponent({
         type: "number",
       });
-      const buttonComponent: HTMLDivElement | undefined = wrapper.find<HTMLDivElement>(".button");
+      const buttonComponent: DOMWrapper<HTMLDivElement> = wrapper.find<HTMLDivElement>(".button");
 
       expect(buttonComponent.exists()).toBeTruthy();
 
@@ -86,7 +86,7 @@ describe("[NumberButton] test", () => {
       wrapper = mountComponent({
         size: "small",
       });
-      const buttonComponent: HTMLDivElement | undefined = wrapper.find<HTMLDivElement>(".button");
+      const buttonComponent: DOMWrapper<HTMLDivElement> = wrapper.find<HTMLDivElement>(".button");
 
       expect(buttonComponent.exists()).toBeTruthy();
       expect(buttonComponent?.attributes('class'))

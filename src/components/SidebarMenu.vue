@@ -21,10 +21,6 @@ import { RouterLink } from 'vue-router';
 
 const isSidebarOpen = shallowRef<Boolean>(false)
 
-function toggleSidebar() {
-  isSidebarOpen.value = !isSidebarOpen.value;
-}
-
 </script>
 
 <style scoped lang="scss">

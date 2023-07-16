@@ -13,26 +13,23 @@
   </svg>
 </template>
 
-<script>
-export default {
-  name: "Gradient"
-}
+<script setup lang="ts">
 </script>
 
 <style scoped lang="scss">
-  svg{
+svg{
+  position: absolute;
+  right: 0;
+  top: 0;
+  &.bottom{
     position: absolute;
-    right: 0;
-    top: 0;
-    &.bottom{
-       position: absolute;
-      top: unset;
-       bottom: -50px!important;
-       left: 0!important;
-       right: 0!important;
-       transform: rotate(157deg);
-       margin: auto;
-     }
+    top: unset;
+    bottom: -50px!important;
+    left: 0!important;
+    right: 0!important;
+    transform: rotate(157deg);
+    margin: auto;
   }
+}
 
 </style>

@@ -1,7 +1,4 @@
 import { describe, it, expect } from "vitest";
-import {DOMWrapper, shallowMount} from "@vue/test-utils";
-import Mode from "@/components/mode/Mode.vue";
-import mode from "@/components/mode/Mode.vue";
 
 describe("Component [Mode]", async () => {
   it("Test if modeToggle is a function", async () => {
