@@ -2,7 +2,7 @@
 
 #### Simple Calculator demo which performs basic maths using the power of Vue, TypeScript, and our minds.
 
-![alt text](http://localhost:5173/src/assets/example.png)
+![alt text](https://github.com/GevorM/calculator/blob/master/src/assets/example.png?raw=true)
 
 ## Build Setup
 
