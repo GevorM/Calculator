@@ -1,0 +1,122 @@
+@use '@/assets/scss/colors' as clr;
+
+$sidebar-width: 4rem;
+$toggle-duration: 300ms;
+$sidebar-padding-inline-start: 1rem;
+
+aside {
+  color: clr.$primary;
+  background: clr.$bg-dark;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-block: 1rem;
+  transition: all $toggle-duration;
+  width: $sidebar-width;
+}
+
+aside[vue\:is-open=true] {
+  width: 3 * $sidebar-width;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 0;
+}
+
+img {
+  object-fit: contain;
+}
+
+svg{
+  font-size: 24px;
+}
+
+li {
+  min-width: fit-content;
+  cursor: pointer;
+  padding-inline-start: $sidebar-padding-inline-start;
+
+  &:hover {
+    color: clr.$secondary;
+    background-color: lighten($color: clr.$bg-dark, $amount: 5);
+  }
+
+  & a {
+    display: flex;
+    align-items: center;
+    column-gap: 0.75rem;
+    position: relative;
+    padding-block: 0.5rem;
+    color: clr.$primary;
+  }
+
+  a.router-link-exact-active::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 0.25rem;
+    height: 100%;
+    background-color: clr.$secondary;
+  }
+}
+.sidebar-head {
+  position: relative;
+  li:hover {
+    background-color: transparent;
+  }
+}
+
+.sidebar-toggle {
+  padding-inline-start: $sidebar-padding-inline-start;
+}
+
+h4 {
+  padding-block-end: 1rem;
+  padding-inline-start: $sidebar-padding-inline-start;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.5;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.125ch;
+  transition: opacity $toggle-duration;
+}
+
+h4[transparent=true] {
+  opacity: 0;
+}
+
+button {
+  cursor: pointer;
+  position: absolute;
+  transition-duration: $toggle-duration;
+  transition-property: transform, left, top;
+  left: 0;
+  top: 1rem;
+  transform: translateX(0%) translateY(2rem) rotateZ(0deg);
+  background: transparent;
+  border: 0;
+  color: clr.$primary;
+
+  &.toggle-button {
+    left: 100%;
+    top: 0;
+    transform: translateX(-100%) translateY(0rem) rotateZ(180deg);
+    color: #fff;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-property: opacity, transform;
+  transition-duration: $toggle-duration;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}

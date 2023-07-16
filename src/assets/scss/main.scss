@@ -1,0 +1,27 @@
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: grid;
+  grid-template-areas: 'sidebar router-view';
+  grid-template-columns: auto 1fr;
+  font-family: sans-serif;
+}
+
+#root {
+  h1{
+    text-align: center;
+    color: #002b52;
+    margin-bottom: 40px;
+  }
+
+  &.dark{
+    h1{
+      color: #ffffff!important;
+    }
+  }
+}
+
+
