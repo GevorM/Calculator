@@ -77,9 +77,8 @@ import {onMounted, ref} from "vue"
 import {Operators} from "@/core/enum.js"
 import Gradient from "@/components/Gradient.vue"
 import {CalcType, NumberType} from "@/core/types"
-import {DOMWrapper} from "@vue/test-utils";
 
-const calculator = ref<DOMWrapper<HTMLDivElement> | undefined>()
+const calculator = ref<HTMLDivElement | undefined>()
 const calc = ref<string>('')
 const showEqual = ref<string>('')
 const showResult = ref<string>('hide')
