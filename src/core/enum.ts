@@ -3,5 +3,6 @@ export enum Operators {
   SUBTRACTION = "-",
   MULTIPLICATION = "*",
   DIVISION = "/",
+  PERCENT = "%",
   EQUAL = "=",
 }

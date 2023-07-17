@@ -50,7 +50,7 @@
         </div>
         <div class="__right_panel">
           <div class="__numbers">
-            <number-button size="small" color="standard">deg</number-button>
+            <number-button size="small" color="standard" @click="calculate('operator', '%', null)">%</number-button>
             <number-button size="normal" color="blue" type="operator"
                            @click="calculate('operator', Operators.MULTIPLICATION, null)">*
             </number-button>
@@ -76,7 +76,7 @@ import NumberButton from "@/components/UI/NumberButton.vue"
 import {onMounted, ref} from "vue"
 import {Operators} from "@/core/enum.js"
 import Gradient from "@/components/Gradient.vue"
-import {CalcType, NumberType} from "@/core/types"
+import {CalcType, NumberType } from "@/core/types"
 
 const calculator = ref<HTMLDivElement | undefined>()
 const calc = ref<string>('')
@@ -107,6 +107,7 @@ const existKeys = ref<Object>({
     "e": "e",
     "µ": "µ",
     "x": "x",
+    "%": "%",
     Enter: "=",
     Backspace: "Ac"
 })
@@ -187,7 +188,7 @@ function isTypeNumber(numberType: string, value: string | number): void {
 }
 
 function isTypeOperator(value: string | number) {
-  if((value === '*' || value === '/') && convertCalculateValueToArray().length === 1 && calc.value === '') {
+  if((value === '*' || value === '/' || value === '%') && convertCalculateValueToArray().length === 1 && calc.value === '') {
     return
   }
 
@@ -205,6 +206,11 @@ function isTypeOperator(value: string | number) {
     }
     if (getLastCharacter() !== value) {
       calc.value = calc.value.replace(/.$/, `${value}`)
+    }
+
+    if(checkLastCharacterIsPercent()) {
+      removeLastValue(-1)
+      showEqual.value = eval(`${calc.value} / 100`).toString()
     }
   }
 }
@@ -254,6 +260,10 @@ function isShowEqual(): void {
   if (showResult.value === "show") {
     resetCalc()
   }
+}
+
+function checkLastCharacterIsPercent ():boolean {
+  return getLastCharacter() === '%'
 }
 
 function resetCalc(): void {
