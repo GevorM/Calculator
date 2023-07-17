@@ -109,5 +109,11 @@ body {
     .button--blue {
       background: #a7c8e6 !important;
     }
+
+    & .active_btn{
+      color: #ffffff;
+      -webkit-box-shadow: 5px 5px 15px 5px rgba(0,130,255,0.42)!important;
+      box-shadow: 5px 5px 15px 5px rgba(0,130,255,0.42)!important;
+    }
   }
 }

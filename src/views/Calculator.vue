@@ -31,7 +31,7 @@
             <number-button size="normal" color="blue" type="operator" @click="calculate('operator', Operators.DIVISION, null)">/</number-button>
           </div>
           <div class="__normal-numbers">
-            <number-button size="normal" color="standard" type="number" @click="calculate('number',7, null)">7</number-button>
+            <number-button size="normal" color="standard" type="number" ref="btn" @click="calculate('number',7, null)">7</number-button>
             <number-button size="normal" color="standard" type="number" @click="calculate('number',8, null)">8</number-button>
             <number-button size="normal" color="standard" type="number" @click="calculate('number',9, null)">9</number-button>
             <number-button size="normal" color="standard" type="number" @click="calculate('number',4, null)">4</number-button>
@@ -141,6 +141,13 @@ function calculate(calcType: string | number, value: string | number, numberType
 function keyDown(event) {
   const key = event.key
   const value = existKeys.value[key]
+  calculator.value.querySelectorAll('.button').forEach(button => {
+    if(value === button.textContent.trim()) {
+      button.classList.add('active_btn')
+    } else {
+      button.classList.remove('active_btn')
+    }
+  })
 
   if (value !== undefined) {
     const numberType: NumberType = (value === 'e') ? 'e' : (value === 'µ' ? 'µ' : (value === 'sin' ? 'sin' : (value === 'Ac' ? 'Ac' : 'x')))

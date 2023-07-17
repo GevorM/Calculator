@@ -50,6 +50,11 @@ $color_2: #818181;
           gap: 20px;
         }
       }
+      & .active_btn{
+        color: #ffffff;
+        -webkit-box-shadow: 0px 0px 15px 7px rgba(18,210,255,0.15);
+        box-shadow: 0px 0px 15px 7px rgba(18,210,255,0.15);
+      }
     }
     .__right_panel {
       display: flex;
