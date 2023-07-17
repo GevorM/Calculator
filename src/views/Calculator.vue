@@ -1,5 +1,5 @@
 <template>
-  <div class="container calculator" @keydown="keyDown" tabindex="0">
+  <div class="container calculator" ref="calculator" @keydown="keyDown" tabindex="0">
     <div class="__interface">
       <Gradient />
       <div class="input" id="input">
@@ -73,11 +73,13 @@
 
 <script lang="ts" setup>
 import NumberButton from "@/components/UI/NumberButton.vue"
-import {ref} from "vue"
+import {onMounted, ref} from "vue"
 import {Operators} from "@/core/enum.js"
 import Gradient from "@/components/Gradient.vue"
 import {CalcType, NumberType} from "@/core/types"
+import {DOMWrapper} from "@vue/test-utils";
 
+const calculator = ref<DOMWrapper<HTMLDivElement> | undefined>()
 const calc = ref<string>('')
 const showEqual = ref<string>('')
 const showResult = ref<string>('hide')
@@ -108,6 +110,11 @@ const existKeys = ref<Object>({
     "x": "x",
     Enter: "=",
     Backspace: "Ac"
+})
+
+onMounted(() => {
+  calculator.value.focus()
+  calculator.value.style.outline = 'none'
 })
 
 function calculate(calcType: string | number, value: string | number, numberType: string | null) {
